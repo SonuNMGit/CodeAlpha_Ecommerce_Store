@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Eco-Friendly Water Bottles</title>
+
+    <style media="screen">
+      body {
+        font-family: 'Open Sans', sans-serif;
+        padding-top: 80px; /* Adjust this based on the height of your header */
+      }
+      
+      /* Jumbotron with background image */
+      .jumbotron {
+        margin-top: 0;
+        margin-bottom: 0;
+        background-image: url('{% static "css/images/aboutusPic.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        padding: 100px 30px;
+        border-radius: 0;
+      }
+
+      .jumbotron h1 {
+        text-align: center;
+        font-size: 60px;
+        font-weight: bold;
+        letter-spacing: 2px;
+      }
+
+      .jumbotron p.lead {
+        font-size: 22px;
+        text-align: center;
+        margin-top: 20px;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .jumbotron hr {
+        border-top: 2px solid white;
+        width: 50%;
+        margin: 20px auto;
+      }
+
+      .jumbotron .btn-primary {
+        background-color: #28a745;
+        border: none;
+        padding: 15px 30px;
+        font-size: 18px;
+        border-radius: 25px;
+        transition: background-color 0.3s ease;
+      }
+
+      .jumbotron .btn-primary:hover {
+        background-color: #218838;
+      }
+
+      .alert {
+        margin: 0;
+        text-align: center;
+        font-size: 26px;
+        font-weight: bold;
+        background-color: #dff0d8;
+        color: #3c763d;
+      }
+
+      footer {
+        background-color: #333;
+        color: white;
+        padding: 20px 0;
+        text-align: center;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        .jumbotron {
+          padding: 50px 20px;
+        }
+        
+        .jumbotron h1 {
+          font-size: 45px;
+        }
+
+        .jumbotron p.lead {
+          font-size: 18px;
+        }
+
+        .jumbotron .btn-primary {
+          font-size: 16px;
+          padding: 12px 24px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Include header -->
+    {% include "header.html" %}
+    
+    <!-- Success Alert -->
+    <div class="alert alert-success">
+      <h3>Eco-Friendly Water Bottles</h3>
+    </div>
+    
+    <!-- Jumbotron Section -->
+    <div class="jumbotron">
+      <h1 class="display-4">Hello, Reader!</h1>
+      <p class="lead">Eco-Friendly Water Bottles are a sustainable solution to reducing plastic waste and protecting the environment. Unlike single-use plastic bottles, these reusable bottles are made from materials like stainless steel, glass, or BPA-free plastic, which are designed to last for years. By switching to eco-friendly water bottles, you help minimize the harmful impact of plastic pollution on wildlife and natural habitats.</p>
+      <hr class="my-4">
+      <p>Explore our Website.</p>
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="/" role="button">HOME</a>
+      </p>
+    </div>
+
+    <!-- Include footer -->
+    {% include "footer.html" %}
+  </body>
+</html>

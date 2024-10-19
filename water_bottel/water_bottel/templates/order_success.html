@@ -1,0 +1,30 @@
+<!-- order_success.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    {% include "header.html" %}
+    <div class="container mt-5">
+        <h2>Order Placed Successfully!</h2>
+        <p>Thank you for your order, {{ order.user.username }}. Your order will be sent to you in 7 days.</p>
+        <p>Order Details:</p>
+        <ul>
+            {% for product in order.products.all %}
+            <li>{{ product.name }}</li>
+            {% endfor %}
+        </ul>
+        <a href="/" class="btn btn-success">Continue Shopping</a>
+    </div>
+    {% include "footer.html" %}
+</body>
+</html>

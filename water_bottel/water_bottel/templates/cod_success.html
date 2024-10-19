@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #e0f7fa;
+            padding-top: 60px; /* Space for fixed navbar if needed */
+        }
+        .confirmation-container {
+            background-color: #ffffff; /* White background for the confirmation box */
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 20px auto; /* Center the confirmation box */
+            max-width: 600px; /* Maximum width for the confirmation box */
+        }
+        h2 {
+            color: #28a745; /* Green color for the success message */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+        p {
+            color: #495057; /* Darker gray for text */
+            margin-bottom: 10px; /* Space below paragraphs */
+        }
+        .order-id {
+            font-weight: bold; /* Bold for Order ID */
+            color: #007bff; /* Bootstrap primary color */
+        }
+    </style>
+</head>
+<body>
+    {% include "header.html" %}
+<div class="container">
+    <div class="confirmation-container">
+        <h2>Your Order has been placed successfully!</h2>
+        <p>You chose <strong>Cash on Delivery</strong>. Please prepare the payment when the delivery arrives.</p>
+        <p class="order-id">Order ID: {{ order.id }}</p>
+    </div>
+</div>
+{% include "footer.html" %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

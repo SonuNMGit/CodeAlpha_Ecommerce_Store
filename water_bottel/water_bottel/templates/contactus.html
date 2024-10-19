@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Eco-Friendly Water Bottles</title>
+
+    <style>
+      /* General body styles */
+      body {
+        font-family: 'Open Sans', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("{% static 'css/images/eco-friendly-background-3.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: white;
+      }
+
+      /* Overlay effect */
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6); /* Add a dark overlay */
+        z-index: -1;
+      }
+
+      /* Main container with padding and centering */
+      .container-custom {
+        padding: 100px 0;
+        text-align: center;
+        color: white;
+        z-index: 1; /* Make sure it's on top of the overlay */
+      }
+
+      /* Add shadow and rounded corners for better visuals */
+      .content-box {
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        display: inline-block;
+        max-width: 600px;
+        margin-top: 30px;
+      }
+
+      /* Button styles */
+      .btn-custom {
+        background-color: #28a745;
+        color: white;
+        border-radius: 30px;
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-custom:hover {
+        background-color: #218838;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .container-custom {
+          padding: 50px 20px;
+        }
+
+        .content-box {
+          width: 90%;
+          margin: 20px auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overlay"></div> 
+
+    
+    {% include "header.html" %}
+
+    
+    <div class="container-custom">
+      <h1 class="display-4">Welcome to Eco-Friendly Water Bottles</h1>
+      <p>Switch to a greener future with sustainable and durable water bottles.</p>
+      
+      <div class="content-box">
+        <h3>Why Choose Us?</h3>
+        <p>Our eco-friendly bottles are designed to help reduce plastic waste and promote environmental sustainability. Crafted from materials like stainless steel, BPA-free plastic, and glass, they are perfect for eco-conscious consumers.</p>
+        <a href="https://wa.me/910000000000" class="btn btn-custom" target="_blank">Contact Us on WhatsApp</a> <! you can add your phone number for contact>
+      </div>
+    </div>
+
+  
+    {% include "footer.html" %}
+  </body>
+</html>

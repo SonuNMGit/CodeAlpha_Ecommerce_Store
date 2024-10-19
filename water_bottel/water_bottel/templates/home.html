@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Eco-Friendly Water Bottles</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+    .bs-example {
+        margin: 0px;
+    }
+
+    .navbar-brand {
+        font-size: 20px;
+        font-family: sans-serif;
+    }
+
+    .col-lg-6 {
+        padding-left: 20%;
+    }
+
+    .jumbotron {
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
+    .full-width-section {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .full-width-section img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    .full-width-section .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+    }
+
+    .full-width-section .content h2 {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    .full-width-section .content p {
+        font-size: 18px;
+    }
+
+    @media (max-width: 768px) {
+        .full-width-section .content h2 {
+            font-size: 28px;
+        }
+
+        .full-width-section .content p {
+            font-size: 16px;
+        }
+    }
+    
+    .jumbotron {
+      background-color: #f0f8ff; /* Light background color */
+      padding: 50px 30px; /* More padding for a better appearance */
+      border-radius: 15px;
+      text-align: center;
+  }
+  
+  .display-heading {
+      font-family: 'Poppins', sans-serif; /* Add a modern font */
+      font-size: 48px; /* Bigger font size */
+      font-weight: bold;
+      color: #2e8b57; /* Eco-friendly dark green */
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle text shadow for depth */
+      background: linear-gradient(45deg, #32a852, #85e085); /* Gradient text */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; /* Makes gradient visible */
+      animation: glow 2s infinite; /* Add a subtle animation */
+  }
+  
+  .lead-paragraph {
+      font-size: 20px;
+      color: #5f5f5f; /* Muted color */
+      margin-top: 20px;
+      font-family: 'Open Sans', sans-serif;
+  }
+  
+  @keyframes glow {
+      0% { text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); }
+      50% { text-shadow: 2px 2px 15px rgba(50, 168, 82, 0.8); }
+      100% { text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); }
+  }
+  
+</style>
+</head>
+<body>
+{% include "header.html" %}
+
+<div class="jumbotron">
+  <h1 class="display-heading">Eco-Friendly Water Bottles</h1>
+  <p class="lead-paragraph">Our bottles are made from sustainable materials to help reduce plastic waste. Choose a better future by switching to eco-friendly options.</p>
+  <hr class="my-4">
+</div>
+
+<div class="full-width-section">
+    <img src="{% static 'css/images/eco-friendly-background-1.jpg' %}" alt="Eco-Friendly Bottle 1">
+    <div class="content">
+        <h2>Eco-Friendly Bottle </h2>
+        <p>Durable and sustainable.</p>
+    </div>
+</div>
+
+<div class="full-width-section">
+    <img src="{% static 'css/images/eco-friendly-background-2.jpg' %}" alt="Eco-Friendly Bottle 2">
+    <div class="content">
+        <h2>Eco-Friendly Bottle </h2>
+        <p>Designed for a greener future.</p>
+    </div>
+</div>
+
+<div class="full-width-section">
+    <img src="{% static 'css/images/eco-friendly-background-3.jpg' %}" alt="Eco-Friendly Bottle 3">
+    <div class="content">
+        <h2>Eco-Friendly Bottle </h2>
+        <p>High quality, low impact.</p>
+    </div>
+</div>
+
+{% include "footer.html" %}
+</body>
+</html>

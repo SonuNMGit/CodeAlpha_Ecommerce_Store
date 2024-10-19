@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>My Orders</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background-color: #fff9c4; /* Light yellow background color */
+            padding-top: 60px; /* Adjust for the navbar if needed */
+        }
+    </style>
+</head>
+<body>
+    {% include "header.html" %}
+    
+    <div class="container mt-5">
+        <h2>My Orders</h2>
+
+        <!-- Display messages -->
+        {% if messages %}
+            <div class="alert alert-dismissible fade show" role="alert">
+                {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if orders %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Products</th>
+                        <th>Address</th>
+                        <th>Contact Number</th>
+                        <th>Payment Method</th>
+                        <th>Payment Status</th>
+                        <th>Estimated Delivery</th>
+                        <th>Delivery Status</th>
+                        <th>Action</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>
+                            {% for product in order.products.all %}
+                                {{ product.name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>{{ order.address }}</td>
+                        <td>{{ order.contact_number }}</td>
+                        <td>{{ order.payment_method }}</td>
+                        <td>{{ order.is_paid|yesno:"Paid,Not Paid" }}</td>
+                        <td>{{ order.estimated_delivery_date|date:"Y-m-d" }}</td>
+                        <td>{{ order.delivery_status|yesno:"Delivered,Not Delivered" }}</td>
+                        <td>
+                            {% if order.delivery_status %}  {# Check if the order is delivered #}
+                                <span class="text-success">Delivered</span>  {# Show delivered status #}
+                            {% elif order.is_canceled %}  
+                                <span class="text-danger">Canceled</span>  {# Show canceled status #}
+                            {% elif order.days_until_delivery > 3 %}  
+                                <form method="post" action="{% url 'cancel_order' order.id %}" style="display:inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm">Cancel Order</button>  {# Show cancel button #}
+                                </form>
+                            {% else %}
+                                <span class="text-muted">Cannot Cancel</span>  {# Indicate that the order cannot be canceled #}
+                            {% endif %}
+                        </td>                                                                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>You have no orders placed yet.</p>
+        {% endif %}
+    </div>
+    
+    {% include "footer.html" %}
+</body>
+</html>

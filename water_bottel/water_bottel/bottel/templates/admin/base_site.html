@@ -1,0 +1,10 @@
+{% extends "admin/base_site.html" %}
+{% block branding %}
+    {{ block.super }} <!-- Keep the default branding -->
+    
+    <div style="float: right; margin-right: 20px;">
+        <a href="{% url 'admin:yourapp_notification_changelist' %}">
+            Notifications ({{ notifications|length }})
+        </a>
+    </div>
+{% endblock %}

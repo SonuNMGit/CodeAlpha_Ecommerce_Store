@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <style type="text/css">
+        body {
+            font-family: 'Open Sans', sans-serif;
+            padding-top: 100px; /* Adjust this based on the height of your header */
+          }
+        .bs-example {
+            margin: 0px;
+        }
+        .navbar-brand {
+            font-size: 20px;
+            font-family: sans-serif;
+        }
+        .welcome-message {
+            font-family: 'Poppins', sans-serif; /* Add a modern font */
+            font-size: 48px; /* Bigger font size */
+            font-weight: bold;
+            color: #2e8b57; /* Eco-friendly dark green */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle text shadow for depth */
+            background: linear-gradient(45deg, #32a852, #85e085); /* Gradient text */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* Makes gradient visible */
+            animation: glow 2s infinite; /* Add a subtle animation */
+        }
+    </style>
+</head>
+<body>
+
+<div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        <a href="/" class="navbar-brand">Eco-Friendly Water Bottles</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <a href="/" class="nav-item nav-link active">Home</a>
+                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="nav-item nav-link" style="border: none; background: none; color: white;">Logout</button>
+                    </form>
+                    <a href="/shopNow" class="nav-item nav-link">ShopNow</a>
+                    <a href="/my_cart" class="nav-item nav-link">My Cart</a>
+                    <a href="/my_order" class="nav-item nav-link">My Order</a>
+                    <a href="/wishlist" class="nav-item nav-link">My Wishlist</a>
+                {% else %}
+                    <a href="/" class="nav-item nav-link active">Home</a>
+                    <a href="/login" class="nav-item nav-link">Login</a>
+                    <a href="/shopNow" class="nav-item nav-link">ShopNow</a>
+                {% endif %}
+            </div>
+
+            <div class="navbar-nav">
+                <a href="/aboutus" class="nav-item nav-link">About Us</a>
+                <a href="/contactus" class="nav-item nav-link">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="welcome-message">
+    {% if user.is_authenticated %}
+        <p>Welcome, {{ user.username }}!</p>
+    {% else %}
+        <p>Hellow user.</p>
+    {% endif %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+        body {
+            background-color: #e0f7fa; /* Light blue background color */
+            padding-top: 60px; /* Adjust for the navbar */
+        }
+        .cart-item-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        .cart-item-remove {
+            color: red;
+        }
+        .cart-item-remove:hover {
+            color: darkred;
+        }
+        .empty-cart-message {
+            font-size: 1.5rem;
+            color: #dc3545; /* Red color */
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    {% include "header.html" %}
+    <div class="container mt-5">
+        <h2>My Cart</h2>
+        
+        {% if products %}
+            <ul class="list-group">
+                {% for product in products %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <!-- Product image -->
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="cart-item-img">
+                        <div>
+                            <h5>{{ product.name }}</h5>
+                            <p>{{ product.description }}</p>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="badge badge-primary badge-pill">Rs.{{ product.price }}</span>
+                        <form method="post" action="{% url 'remove_from_cart' product.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link cart-item-remove">
+                                <i class="fa fa-trash"></i> Remove
+                            </button>
+                        </form>                       
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            <a href="/checkout" class="btn btn-success mt-4">Proceed to Checkout</a>
+        {% else %}
+            <p class="empty-cart-message">Your cart is empty.</p>
+            <a href="/shopNow" class="btn btn-primary mt-4">Shop Now</a>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    {% include "footer.html" %}
+</body>
+</html>
